@@ -25,7 +25,7 @@ export default function AlbumPage() {
             </p>
             <Link
               href="/#portfolio"
-              className="inline-flex items-center px-6 py-3 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700 transition"
+              className="inline-flex items-center px-6 py-3 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-700 transition"
             >
               <i className="fa-solid fa-arrow-left mr-2"></i>
               Back to Portfolio
@@ -43,7 +43,7 @@ export default function AlbumPage() {
         <div className="mb-12">
           <Link
             href="/#portfolio"
-            className="inline-flex items-center px-4 py-2 text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 font-medium transition mb-6"
+            className="inline-flex items-center px-4 py-2 text-orange-500 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-medium transition mb-6"
           >
             <i className="fa-solid fa-arrow-left mr-2"></i>
             Back to Portfolio

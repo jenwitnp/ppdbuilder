@@ -3,11 +3,11 @@ import { slidesService } from "@/services/slides.service";
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { id } = await params;
     const formData = await request.formData();
-    const { id } = params;
 
     const title = formData.get("title") as string;
     const linkUrl = formData.get("link_url") as string;
@@ -41,40 +41,40 @@ export async function PUT(
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to update slide" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     await slidesService.deleteSlide(id);
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to delete slide" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const slide = await slidesService.toggleSlideStatus(id, body.is_active);
     return NextResponse.json({ data: slide });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to update slide status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

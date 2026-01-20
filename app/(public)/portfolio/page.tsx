@@ -85,13 +85,13 @@ export default function PortfolioPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-orange-200 hover:text-white transition mb-6"
+            className="inline-flex items-center gap-2 text-gray-800 dark:text-orange-500 hover:text-white transition mb-6"
           >
             <i className="fa-solid fa-arrow-left"></i>
             กลับหน้าแรก
           </Link>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">ผลงานของเรา</h1>
-          <p className="text-lg text-orange-100 max-w-2xl">
+          <p className="text-lg text-gray-800 dark:text-orange-500 max-w-2xl">
             ชมการสะสมโครงการก่อสร้างที่มีคุณภาพ ออกแบบได้สวยงาม
             และบรรลุความพึงพอใจของลูกค้า
           </p>
@@ -103,7 +103,7 @@ export default function PortfolioPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-500 mb-2">
               {totalAlbums}
             </div>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -111,13 +111,13 @@ export default function PortfolioPage() {
             </p>
           </div>
           <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-500 mb-2">
               {totalPages}
             </div>
             <p className="text-gray-700 dark:text-gray-300 font-medium">หน้า</p>
           </div>
           <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-500 mb-2">
               100%
             </div>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -137,11 +137,11 @@ export default function PortfolioPage() {
             {/* Page Info */}
             <p className="text-gray-600 dark:text-gray-400">
               หน้าที่{" "}
-              <span className="font-bold text-orange-600 dark:text-orange-400">
+              <span className="font-bold text-orange-600 dark:text-orange-500">
                 {currentPage}
               </span>{" "}
               จาก{" "}
-              <span className="font-bold text-orange-600 dark:text-orange-400">
+              <span className="font-bold text-orange-600 dark:text-orange-500">
                 {totalPages}
               </span>
             </p>
@@ -215,7 +215,7 @@ export default function PortfolioPage() {
             </Link>
             <Link
               href="/services"
-              className="inline-block bg-white dark:bg-gray-700 text-orange-600 dark:text-orange-400 px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition border border-orange-600 dark:border-orange-400"
+              className="inline-block bg-white dark:bg-gray-700 text-orange-600 dark:text-orange-500 px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition border border-orange-600 dark:border-orange-500"
             >
               ดูบริการของเรา
             </Link>

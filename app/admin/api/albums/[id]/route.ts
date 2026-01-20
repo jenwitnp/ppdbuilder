@@ -6,10 +6,11 @@ import { AlbumsService } from "@/services/albums.service";
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const album = await AlbumsService.getAlbumById(params.id);
+    const { id } = await params;
+    const album = await AlbumsService.getAlbumById(id);
 
     if (!album) {
       return NextResponse.json({ error: "Album not found" }, { status: 404 });
@@ -26,9 +27,10 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const { id } = await params;
     const formData = await request.formData();
     const image = formData.get("image") as File | null;
     const title = formData.get("title") as string;
@@ -52,7 +54,7 @@ export async function PUT(
     }
 
     // Update album
-    const album = await AlbumsService.updateAlbum(params.id, {
+    const album = await AlbumsService.updateAlbum(id, {
       title,
       description,
       cover_image_url: imageUrl,
@@ -69,10 +71,11 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    await AlbumsService.deleteAlbum(params.id);
+    const { id } = await params;
+    await AlbumsService.deleteAlbum(id);
     return NextResponse.json({ message: "Album deleted successfully" });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

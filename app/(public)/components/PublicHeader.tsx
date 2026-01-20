@@ -161,7 +161,7 @@ export default function PublicHeader() {
                 className={`fas ${
                   theme === "dark"
                     ? "fa-sun text-orange-400"
-                    : "fa-moon text-gray-600"
+                    : "fa-moon text-gray-800"
                 } text-xl`}
               ></i>
             </button>
