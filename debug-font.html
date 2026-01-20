@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Debug</title>
+    <style>
+        body {
+            font-family: "Kanit", ui-sans-serif, system-ui, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .debug-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kanit Font Debug Check</h1>
+
+    <div class="debug-section">
+        <h2>Body Classes:</h2>
+        <p id="body-classes"></p>
+    </div>
+
+    <div class="debug-section">
+        <h2>Computed Font Family:</h2>
+        <p id="font-family"></p>
+    </div>
+
+    <div class="debug-section">
+        <h2>CSS Variable --font-kanit:</h2>
+        <p id="css-var"></p>
+    </div>
+
+    <div class="debug-section">
+        <h2>Font Test (Should display in Kanit):</h2>
+        <p style="font-size: 24px;">Hello สวัสดี</p>
+        <p style="font-size: 20px;">ABCD 1234 ก ข ค ง จ ฉ ช</p>
+    </div>
+
+    <script>
+        // Check body classes
+        document.getElementById('body-classes').textContent = document.body.className || '(none)';
+
+        // Check computed font
+        const computedFont = window.getComputedStyle(document.body).fontFamily;
+        document.getElementById('font-family').textContent = computedFont;
+
+        // Check CSS variable
+        const kantiVar = window.getComputedStyle(document.documentElement).getPropertyValue('--font-kanit').trim();
+        document.getElementById('css-var').textContent = kantiVar || '(not found)';
+
+        // Log to console
+        console.log('Body classes:', document.body.className);
+        console.log('Computed font-family:', computedFont);
+        console.log('--font-kanit variable:', kantiVar);
+    </script>
+</body>
+
+</html>

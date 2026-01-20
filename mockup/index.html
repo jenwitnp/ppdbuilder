@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPD Builder | รับเหมาก่อสร้างและให้คำปรึกษาครบวงจร</title>
+    <meta name="description" content="บริการรับเหมาก่อสร้างและให้คำปรึกษาโดยทีมงานมืออาชีพ ออกแบบ ก่อสร้าง ต่อเติม ครบวงจร">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky blue
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#f59e0b', // Amber/Orange
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Kanit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-brand-700 dark:text-brand-500 flex items-center gap-2">
+                        <i class="fa-solid fa-helmet-safety text-accent-500"></i> PPD<span class="text-gray-600 dark:text-gray-300">BUILDER</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition">หน้าแรก</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition">บริการของเรา</a>
+                    <a href="#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition">ผลงาน</a>
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 font-medium transition">เกี่ยวกับเรา</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-full font-medium transition shadow-lg shadow-brand-500/30">ติดต่อเรา</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none">
+                        <i id="theme-icon" class="fas fa-moon text-xl text-gray-600 dark:text-yellow-400"></i>
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-200 hover:text-brand-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800">หน้าแรก</a>
+                <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800">บริการของเรา</a>
+                <a href="#portfolio" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800">ผลงาน</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800">เกี่ยวกับเรา</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-brand-600 dark:text-brand-400 font-bold">ติดต่อเรา</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        <!-- Decoration blobb -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 left-0 -ml-20 -mt-20 w-96 h-96 bg-accent-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full border border-brand-200 bg-brand-50 dark:bg-gray-800 dark:border-gray-700 mb-6">
+                        <span class="flex-shrink-0 w-2 h-2 rounded-full bg-brand-600 mr-2"></span>
+                        <span class="text-sm font-medium text-brand-900 dark:text-brand-100 tracking-wide uppercase">Professional Construction</span>
+                    </div>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+                        สร้างสรรค์ความฝัน <br>
+                        <span class="text-brand-600 dark:text-brand-400">ด้วยมาตรฐานมืออาชีพ</span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        บริการรับเหมาก่อสร้างและที่ปรึกษาโครงการ ครอบคลุมตั้งแต่ออกแบบจนถึงส่งมอบงาน ด้วยทีมวิศวกรและสถาปนิกผู้เชี่ยวชาญ พร้อมเนรมิตทุกความต้องการของคุณ
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-700 md:py-4 md:text-lg shadow-lg shadow-brand-500/40 transition transform hover:-translate-y-1">
+                            ขอใบเสนอราคา
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 md:py-4 md:text-lg transition">
+                            ดูบริการของเรา
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                   <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                       <!-- Placeholder for Hero Image - using a gradient/icon composition since I can't fetch external images easily without knowing valid URLs, 
+                            but for specific tool I can generate one or just use a nice placeholder div -->
+                        <div class="relative block w-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
+                             <div class="aspect-w-4 aspect-h-3 bg-gray-200 dark:bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-building-user text-9xl text-gray-400 dark:text-gray-600"></i>
+                             </div>
+                             <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Project Consult</h3>
+                                    <p class="text-sm text-gray-500">Expert Advice</p>
+                                </div>
+                                <div class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Active</div>
+                             </div>
+                             <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-brand-600 h-2.5 rounded-full" style="width: 75%"></div>
+                              </div>
+                              <div class="mt-2 text-right text-xs text-gray-500">Progress: 75%</div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Our Services</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                    บริการที่ครบวงจร
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400 mx-auto">
+                    เรามีความเชี่ยวชาญในงานก่อสร้างและงานระบบหลากหลายรูปแบบ
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Service 1 -->
+                <div class="relative group bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl hover:shadow-xl transition duration-300 border border-transparent hover:border-brand-500">
+                    <div class="absolute -top-6 left-8 bg-brand-600 rounded-xl p-4 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-trowel-bricks text-2xl text-white"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">รับเหมาก่อสร้าง</h3>
+                    <p class="mt-4 text-gray-500 dark:text-gray-300">
+                        สร้างบ้าน อาคารพาณิชย์ โรงงาน ด้วยวัสดุคุณภาพและมาตรฐานทางวิศวกรรม ควบคุมงานโดยทีมงานมืออาชีพ
+                    </p>
+                    <a href="#" class="mt-6 inline-block text-brand-600 dark:text-brand-400 font-medium hover:text-brand-800 transition">อ่านเพิ่มเติม &rarr;</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="relative group bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl hover:shadow-xl transition duration-300 border border-transparent hover:border-brand-500">
+                    <div class="absolute -top-6 left-8 bg-accent-500 rounded-xl p-4 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-clipboard-check text-2xl text-white"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">ที่ปรึกษาโครงการ</h3>
+                    <p class="mt-4 text-gray-500 dark:text-gray-300">
+                        ให้คำปรึกษาด้านการบริหารงานก่อสร้าง ตรวจสอบคุณภาพ และควบคุมงบประมาณให้เป็นไปตามเป้าหมาย
+                    </p>
+                    <a href="#" class="mt-6 inline-block text-brand-600 dark:text-brand-400 font-medium hover:text-brand-800 transition">อ่านเพิ่มเติม &rarr;</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="relative group bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl hover:shadow-xl transition duration-300 border border-transparent hover:border-brand-500">
+                    <div class="absolute -top-6 left-8 bg-purple-500 rounded-xl p-4 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-pen-ruler text-2xl text-white"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">ออกแบบและรีโนเวท</h3>
+                    <p class="mt-4 text-gray-500 dark:text-gray-300">
+                        ออกแบบสถาปัตยกรรม ภายใน และบริการรีโนเวทอาคารเก่าให้สวยงามและทันสมัย ตอบโจทย์ทุกไลฟ์สไตล์
+                    </p>
+                    <a href="#" class="mt-6 inline-block text-brand-600 dark:text-brand-400 font-medium hover:text-brand-800 transition">อ่านเพิ่มเติม &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="bg-brand-700 dark:bg-gray-900 overflow-hidden shadow rounded-lg">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                <div class="px-4 py-5 bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden sm:p-6 text-center transform hover:scale-105 transition duration-300">
+                    <dt class="text-sm font-medium text-gray-500 truncate text-gray-400">โครงการที่สำเร็จ</dt>
+                    <dd class="mt-1 text-4xl font-semibold text-brand-600 dark:text-brand-400">150+</dd>
+                </div>
+                <div class="px-4 py-5 bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden sm:p-6 text-center transform hover:scale-105 transition duration-300">
+                    <dt class="text-sm font-medium text-gray-500 truncate text-gray-400">ปีแห่งประสบการณ์</dt>
+                    <dd class="mt-1 text-4xl font-semibold text-brand-600 dark:text-brand-400">12</dd>
+                </div>
+                <div class="px-4 py-5 bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden sm:p-6 text-center transform hover:scale-105 transition duration-300">
+                    <dt class="text-sm font-medium text-gray-500 truncate text-gray-400">ความพึงพอใจลูกค้า</dt>
+                    <dd class="mt-1 text-4xl font-semibold text-brand-600 dark:text-brand-400">100%</dd>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">ติดต่อเรา</h2>
+                <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">สนใจบริการหรือต้องการปรึกษา ติดต่อเราได้ทันที</p>
+            </div>
+
+            <div class="relative bg-white dark:bg-gray-800 shadow-2xl rounded-2xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-10 lg:p-14 bg-brand-600 text-white flex flex-col justify-between relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-6">ข้อมูลติดต่อ</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-map-marker-alt text-xl mt-1 text-brand-200"></i>
+                                    <span>Building 88, ถนนสุขุมวิท<br>กรุงเทพมหานคร 10110</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <i class="fas fa-phone-alt text-xl text-brand-200"></i>
+                                    <span>02-123-4567</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <i class="fas fa-envelope text-xl text-brand-200"></i>
+                                    <span>contact@ppdbuilder.com</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-x-4 mt-10 relative z-10">
+                            <a href="#" class="inline-block w-10 h-10 rounded-full bg-brand-700 hover:bg-brand-500 flex items-center justify-center transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="inline-block w-10 h-10 rounded-full bg-brand-700 hover:bg-brand-500 flex items-center justify-center transition"><i class="fab fa-line"></i></a>
+                            <a href="#" class="inline-block w-10 h-10 rounded-full bg-brand-700 hover:bg-brand-500 flex items-center justify-center transition"><i class="fab fa-instagram"></i></a>
+                        </div>
+
+                        <!-- Decor circles -->
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-500 rounded-full opacity-50"></div>
+                        <div class="absolute top-10 -left-10 w-20 h-20 bg-brand-400 rounded-full opacity-30"></div>
+                    </div>
+                    
+                    <div class="p-10 lg:p-14">
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ชื่อ - นามสกุล</label>
+                                <input type="text" id="name" class="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-500 focus:border-brand-500 dark:text-white transition" placeholder="กรอกชื่อของคุณ">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">อีเมล</label>
+                                <input type="email" id="email" class="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-500 focus:border-brand-500 dark:text-white transition" placeholder="example@email.com">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 dark:text-gray-300">บริการที่สนใจ</label>
+                                <select id="service" class="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-500 focus:border-brand-500 dark:text-white transition">
+                                    <option>รับเหมาก่อสร้าง</option>
+                                    <option>ที่ปรึกษาโครงการ</option>
+                                    <option>ออกแบบและรีโนเวท</option>
+                                    <option>อื่นๆ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ข้อความ</label>
+                                <textarea id="message" rows="4" class="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-500 focus:border-brand-500 dark:text-white transition" placeholder="รายละเอียดที่คุณต้องการปรึกษา"></textarea>
+                            </div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition shadow-lg hover:shadow-xl">
+                                ส่งข้อความ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                     <span class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-helmet-safety text-accent-500"></i> PPD<span class="text-gray-400">BUILDER</span>
+                    </span>
+                    <p class="text-gray-400 text-sm mt-2">© 2025 PPD Builder Co., Ltd. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
