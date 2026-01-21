@@ -21,7 +21,7 @@ export default function AlbumPage() {
               Album not found
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
-              The album you're looking for doesn't exist.
+              {`The album you're looking for doesn't exist.`}
             </p>
             <Link
               href="/#portfolio"

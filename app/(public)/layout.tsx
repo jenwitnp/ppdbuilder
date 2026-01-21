@@ -27,7 +27,7 @@ export default function PublicLayout({
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="light"
+        defaultTheme="dark"
         enableSystem
         storageKey="public-theme"
       >
