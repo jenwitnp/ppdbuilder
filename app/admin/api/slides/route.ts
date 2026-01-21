@@ -5,11 +5,10 @@ export async function GET() {
   try {
     const slides = await slidesService.getAllSlides();
     return NextResponse.json({ data: slides });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || "Failed to fetch slides" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Failed to fetch slides";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
 
@@ -40,10 +39,9 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ data: slide });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || "Failed to create slide" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Failed to create slide";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

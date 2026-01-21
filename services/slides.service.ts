@@ -3,10 +3,12 @@ import { Slide } from "@/types/slide";
 import { ImageProcessor, ImagePresets } from "@/lib/image-processor";
 
 export class SlidesService {
-  private supabase = getServiceSupabase();
+  private getSupabase() {
+    return getServiceSupabase();
+  }
 
   async getAllSlides(): Promise<Slide[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from("slides")
       .select("*")
       .order("display_order", { ascending: true });
@@ -19,7 +21,7 @@ export class SlidesService {
   }
 
   async getSlideById(id: string): Promise<Slide | null> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from("slides")
       .select("*")
       .eq("id", id)
@@ -45,8 +47,8 @@ export class SlidesService {
       .substring(7)}.jpg`;
     const filePath = `slides/${fileName}`;
 
-    const { error: uploadError } = await this.supabase.storage
-      .from("images")
+    const { error: uploadError } = await this.getSupabase()
+      .storage.from("images")
       .upload(filePath, optimized.buffer, {
         contentType: "image/jpeg",
         upsert: false,
@@ -56,8 +58,8 @@ export class SlidesService {
       throw new Error(uploadError.message);
     }
 
-    const { data: urlData } = this.supabase.storage
-      .from("images")
+    const { data: urlData } = this.getSupabase()
+      .storage.from("images")
       .getPublicUrl(filePath);
 
     return urlData.publicUrl;
@@ -66,8 +68,8 @@ export class SlidesService {
   async deleteImage(imageUrl: string): Promise<void> {
     const imagePath = imageUrl.split("/storage/v1/object/public/images/")[1];
     if (imagePath) {
-      const { error } = await this.supabase.storage
-        .from("images")
+      const { error } = await this.getSupabase()
+        .storage.from("images")
         .remove([imagePath]);
 
       if (error) {
@@ -83,7 +85,7 @@ export class SlidesService {
     displayOrder: number;
     isActive: boolean;
   }): Promise<Slide> {
-    const { data: slide, error } = await this.supabase
+    const { data: slide, error } = await this.getSupabase()
       .from("slides")
       .insert({
         title: data.title || null,
@@ -110,9 +112,9 @@ export class SlidesService {
       linkUrl?: string;
       displayOrder: number;
       isActive: boolean;
-    }
+    },
   ): Promise<Slide> {
-    const { data: slide, error } = await this.supabase
+    const { data: slide, error } = await this.getSupabase()
       .from("slides")
       .update({
         title: data.title || null,
@@ -140,7 +142,10 @@ export class SlidesService {
       await this.deleteImage(slide.image_url);
     }
 
-    const { error } = await this.supabase.from("slides").delete().eq("id", id);
+    const { error } = await this.getSupabase()
+      .from("slides")
+      .delete()
+      .eq("id", id);
 
     if (error) {
       throw new Error(error.message);
@@ -148,7 +153,7 @@ export class SlidesService {
   }
 
   async toggleSlideStatus(id: string, isActive: boolean): Promise<Slide> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from("slides")
       .update({ is_active: isActive })
       .eq("id", id)
